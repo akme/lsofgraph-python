@@ -1,4 +1,4 @@
-Python version of ![zevv/lsofgraph](https://github.com/zevv/lsofgraph)
+Python version of [zevv/lsofgraph](https://github.com/zevv/lsofgraph)
 
 A small utility to convert Unix `lsof` output to a graph showing FIFO and UNIX interprocess communication.
 
