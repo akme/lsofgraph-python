@@ -43,7 +43,6 @@ def parse_lsof():
                     proc = {}
                     file = None
                     cur = None
-
     return procs
 
 
@@ -96,7 +95,7 @@ def find_connections(procs):
                             else:
                                 fs[id] = []
                                 fs[id].append(file)
-                                
+
                 if 't' in file and (file['t'] == 'IPv4' or file['t'] == 'IPv6'):
                     if '->' in file['n']:
                         a, b = file['n'].split("->")
@@ -118,7 +117,6 @@ def find_connections(procs):
                                 else:
                                     fs[id] = []
                                     fs[id].append(file)
-
     return cs
 
 
@@ -128,7 +126,7 @@ def print_graph(procs, conns):
         'unix': "purple",
         'tcp': "red",
         'udp': "orange",
-        'pipe': "orange"
+        'pipe': "blue"
     }
 
     # Generate graph
@@ -175,6 +173,7 @@ def print_graph(procs, conns):
     print("}")
 
 
-procs = parse_lsof()
-conns = find_connections(procs)
-print_graph(procs, conns)
+if __name__ == '__main__':
+    procs = parse_lsof()
+    conns = find_connections(procs)
+    print_graph(procs, conns)
