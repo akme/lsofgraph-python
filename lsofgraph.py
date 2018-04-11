@@ -149,8 +149,12 @@ def print_graph(procs, conns):
             print("\tp%s [ label = \"%s\\n%s %s\" fillcolor=%s ];" %
                   (proc['p'], proc['n'], proc['p'], proc['L'], color))
         elif 'p' in proc:
-            print("\tp%s [ label = \"%s\\n%s %s\" fillcolor=%s ];" %
+            if 'L' in proc: # there could be no L flag if process running, but user was removed. lsof: no pwd entry for UID
+                print("\tp%s [ label = \"%s\\n%s %s\" fillcolor=%s ];" %
                   (proc['p'], proc['c'], proc['p'], proc['L'], color))
+            else:
+                print("\tp%s [ label = \"%s\\n%s %s\" fillcolor=%s ];" %
+                  (proc['p'], proc['c'], proc['p'], "no user", color))
         if 'R' in proc and proc['R'] in procs:
             proc_parent = procs[proc['R']]
             if proc_parent:
