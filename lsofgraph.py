@@ -149,12 +149,12 @@ def print_graph(procs, conns):
             print("\tp%s [ label = \"%s\\n%s %s\" fillcolor=%s ];" %
                   (proc['p'], proc['n'], proc['p'], proc['L'], color))
         elif 'p' in proc:
-            if 'L' in proc: # there could be no L flag if process running, but user was removed. lsof: no pwd entry for UID
+            if 'L' in proc:  # there could be no L flag if process running, but user was removed. lsof: no pwd entry for UID
                 print("\tp%s [ label = \"%s\\n%s %s\" fillcolor=%s ];" %
-                  (proc['p'], proc['c'], proc['p'], proc['L'], color))
+                      (proc['p'], proc['c'], proc['p'], proc['L'], color))
             else:
                 print("\tp%s [ label = \"%s\\n%s %s\" fillcolor=%s ];" %
-                  (proc['p'], proc['c'], proc['p'], "no user", color))
+                      (proc['p'], proc['c'], proc['p'], "no user", color))
         if 'R' in proc and proc['R'] in procs:
             proc_parent = procs[proc['R']]
             if proc_parent:
@@ -163,7 +163,7 @@ def print_graph(procs, conns):
                         "\tp%s -> p%s [ penwidth=2 weight=100 color=grey60 dir=\"none\" ];" % (proc['R'], proc['p']))
 
     for type, conn in conns.iteritems():
-        for id, files in conn.items():
+        for id, files in conn.iteritems():
             if len(files) == 2:
                 if files[0]['proc'] != files[1]['proc']:
                     label = type + ":\\n" + id
