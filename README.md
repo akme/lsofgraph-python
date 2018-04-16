@@ -19,3 +19,13 @@ sudo lsof -n -F | python lsofgraph.py | unflatten -l 1 -c 6 | dot -T svg > /tmp/
 ````
 
 ![example output](/example.jpg)
+
+#Install and use to Mac OS
+
+Graphviz contains utilities dot and unflatten
+````shell
+brew install Graphviz
+git clone https://github.com/akme/lsofgraph-python.git
+cd lsofgraph-python
+lsof -n -F | python lsofgraph.py | unflatten -l 1 -c 6 | dot -T jpg > /tmp/a.jpg && open /tmp/a.jpg
+````
