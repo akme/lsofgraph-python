@@ -28,4 +28,5 @@ brew install Graphviz
 git clone https://github.com/akme/lsofgraph-python.git
 cd lsofgraph-python
 lsof -n -F | python lsofgraph.py | unflatten -l 1 -c 6 | dot -T jpg > /tmp/a.jpg && open /tmp/a.jpg
+lsof -n -F | python lsofgraph.py | unflatten -l 1 -c 6 | dot -T svg > /tmp/a.jpg && open -a Safari.app '/tmp/a.svg'
 ````
