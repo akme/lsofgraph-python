@@ -12,7 +12,7 @@ def parse_lsof():
     for line in sys.stdin:
 
         if line.startswith("COMMAND"):
-            print 'did you run lsof without -F?'
+            print("did you run lsof without -F?")
             exit(1)
 
         tag = line[0]
@@ -54,7 +54,7 @@ def find_connections(procs):
         'udp': {},
         'pipe': {}
     }
-    for pid, proc in procs.iteritems():
+    for pid, proc in procs.items():
         if 'files' in proc:
             for _, file in enumerate(proc['files']):
 
@@ -140,7 +140,7 @@ def print_graph(procs, conns):
 
     # Parent/child relationships
 
-    for pid, proc in procs.iteritems():
+    for pid, proc in procs.items():
         if 'R' in proc and proc['R'] == "1":
             color = "grey70"
         else:
@@ -162,8 +162,8 @@ def print_graph(procs, conns):
                     print(
                         "\tp%s -> p%s [ penwidth=2 weight=100 color=grey60 dir=\"none\" ];" % (proc['R'], proc['p']))
 
-    for type, conn in conns.iteritems():
-        for id, files in conn.iteritems():
+    for type, conn in conns.items():
+        for id, files in conn.items():
             if len(files) == 2:
                 if files[0]['proc'] != files[1]['proc']:
                     label = type + ":\\n" + id
